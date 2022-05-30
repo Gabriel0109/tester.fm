@@ -13,14 +13,8 @@ export function HoverBoxes() {
     const boxTween3 = useRef(null)
     const boxRef4 = useRef()
     const boxTween4 = useRef(null)
-    // const divTest = useRef()
     const testTween = useRef(null)
     useEffect(() => {
-        const boxes = [
-            boxRef2,
-            boxRef3,
-            boxRef4
-        ]
         boxTween1.current = gsap.to(boxRef1.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
         boxTween2.current = gsap.to(boxRef2.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
         boxTween3.current = gsap.to(boxRef3.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
@@ -28,14 +22,28 @@ export function HoverBoxes() {
         gsap.to(".div1", { x: -400, ease: 'linear', opacity: 0, scrollTrigger: {
             trigger: ".div1",
             toggleActions: "play none reverse none",
-            start: " top+=310 center+=100",
+            start: " top+=280 center",
+            markers: true,
+            scrub: true,
+        }})
+        gsap.to(".div2", { x: -200, ease: 'linear', opacity: 0, scrollTrigger: {
+            trigger: ".div2",
+            toggleActions: "play none reverse none",
+            start: " top+=280 center",
             markers: true,
             scrub: true,
         }})
         gsap.to(".div3", { x: 400, ease: 'linear', opacity: 0, scrollTrigger: {
             trigger: ".div1",
             toggleActions: "play none reverse none",
-            start: " top+=310 center+=100",
+            start: " top+=280 center+=100",
+            markers: true,
+            scrub: true,
+        }})
+        gsap.to(".div4", { x: 400, ease: 'linear', opacity: 0, scrollTrigger: {
+            trigger: ".div1",
+            toggleActions: "play none reverse none",
+            start: " top+=280 center+=100",
             markers: true,
             scrub: true,
         }})
