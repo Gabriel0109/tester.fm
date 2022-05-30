@@ -56,4 +56,24 @@ export const BoxesWrapper = styled.section`
          align-items: flex-end;
    
          }
+
+         .major{
+             position: absolute;
+             top: 0;
+             bottom: 0;
+             left: 0;
+             padding: 3rem;
+             right: 0;
+             transform: scale(0);
+             display: flex;
+             justify-content: center;
+             div{
+                     background-color:#7de2d1;
+                     color: var(--text-color);
+                     width: 90%;
+                     height: 90%;
+
+             }
+
+         }
 `
