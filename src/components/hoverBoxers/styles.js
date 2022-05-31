@@ -7,12 +7,15 @@ export const BoxesWrapper = styled.section`
     grid-column-gap: 1rem;
     grid-row-gap: 1rem;
 
-    div{
+    .content{
         border-radius: 1rem;
         transition: scale 0.5s;
         padding: 2rem;
          font-size: 1.8rem;
         font-weight: bold;
+        h1{
+            margin-bottom: 0;
+        }
     
     }
 
@@ -21,6 +24,7 @@ export const BoxesWrapper = styled.section`
         grid-area: 1 / 1 / 3 / 3; 
         background-color:#7de2d1;
         color: #131515; 
+        border-radius: 1rem;
         position: relative;
         overflow: hidden;
         .text-flow{
@@ -32,15 +36,36 @@ export const BoxesWrapper = styled.section`
         grid-area: 1 / 3 / 2 / 4; 
         background-color:#339989;
         color: #131515; 
+        border-radius: 1rem;
+        .teste{
+        position: relative;
+        overflow: hidden;
         min-height: 5rem;
         display: flex;
         align-items: flex-end;
+        }
 
+        .text-flow{
+            top: 0;
+            width: 100%;
+            right: 0;
+            left: 0;
+            display: flex;
+            justify-content: flex-end;
+            align-items:center;
+            height: 100%;
+            bottom: 0;
+            position: absolute;
+            font-size: 6rem;
+            background-color: #339989
+         
+        }   
     }
     .div3 {
          grid-area: 1 / 4 / 2 / 5;
          background-color:#2b2c28;
          color: var(--text-color);
+         border-radius: 1rem;
          min-height: 5rem;
          display: flex;
          align-items: flex-end;
@@ -53,6 +78,7 @@ export const BoxesWrapper = styled.section`
          color: #131515; 
          min-height: 5rem;
          display: flex;
+         border-radius: 1rem;
          align-items: flex-end;
    
          }

@@ -22,7 +22,7 @@ export function Box1({children}){
         boxTween1.current.reverse()
     }
     return(
-        <div className="div1" ref={boxRef1} onMouseEnter={handleEnter1} onMouseLeave={handleLeave1}>
+        <div className="div1 content" ref={boxRef1} onMouseEnter={handleEnter1} onMouseLeave={handleLeave1}>
         {children}
     </div>
     )

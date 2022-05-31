@@ -28,4 +28,9 @@ body {
   color: var(--text-color);
   font-family: 'Trap';
   font-weight: normal;
+  
+}
+a{
+  color: unset;
+  text-decoration: none;    
 }

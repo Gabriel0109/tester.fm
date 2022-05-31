@@ -24,7 +24,7 @@ export function Box3({ children }) {
         boxTween3.current.reverse()
     }
     return (
-        <div className="div3" ref={boxRef3} onMouseEnter={handleEnter3} onMouseLeave={handleLeave3}>
+        <div className="div3 content" ref={boxRef3} onMouseEnter={handleEnter3} onMouseLeave={handleLeave3}>
             {children}
         </div>
     )
