@@ -40,7 +40,8 @@ export function Box2({children}){
             teste teste 
             </div>
             <div className="text-flow" ref={textRef}>
-                        <a href="#2"> → </a>
+                        <a href="#teste"> → </a>
+                        {/* <a href="#2"> *</a> */}
             </div>
      </div >
     </div>

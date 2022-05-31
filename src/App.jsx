@@ -9,12 +9,7 @@ function App() {
       <Header />
   
       <HoverBoxes />
-      <Header />
-      <Header />
-      <Header />
-      <Header />
-      <Header />
-      <Header />
+    
     
     </>
   )
