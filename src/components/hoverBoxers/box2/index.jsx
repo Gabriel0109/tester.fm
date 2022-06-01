@@ -12,7 +12,7 @@ export function Box2({children}){
         let box = document.querySelector('.div2');
         let width = box.offsetWidth;
         // let height = box.offsetHeight;
-        console.log(width)
+        // console.log(width)
         boxTween2.current = gsap.to(boxRef2.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
         textTween.current = gsap.fromTo(textRef.current, {opacity: 0, paused: true, x: -200}, {opacity: 1 , paused: true, x: 0} )
         gsap.to(".div2", { x: -200, ease: 'linear', opacity: 0, scrollTrigger: {
