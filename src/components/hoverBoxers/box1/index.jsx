@@ -1,6 +1,7 @@
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import {  useEffect, useRef } from 'react'
 import gsap from 'gsap'
+import { FaSpotify} from 'react-icons/fa'
 gsap.registerPlugin(ScrollTrigger);
 
 export function Box1({children}){
@@ -24,6 +25,12 @@ export function Box1({children}){
     return(
         <div className="div1 content" ref={boxRef1} onMouseEnter={handleEnter1} onMouseLeave={handleLeave1}>
         {children}
+        <div className="spotify-logo">
+            <a href="">
+                <FaSpotify />
+                <p>Open in Spotify</p>
+            </a>
+        </div>
     </div>
     )
 }

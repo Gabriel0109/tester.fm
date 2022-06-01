@@ -31,9 +31,17 @@ export const BoxesWrapper = styled.section`
             position: absolute;
             top: 50%;
         }
-        .spotify-link{
+        .spotify-logo{
             position: absolute;
             bottom: 0;
+            a{
+                display: flex;
+                align-items: center;
+                color: var(--text-color);
+                p{
+                    margin-left: .5rem;
+                }
+            }
         }
     }
     .div2 { 
