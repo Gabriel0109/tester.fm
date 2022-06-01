@@ -31,6 +31,10 @@ export const BoxesWrapper = styled.section`
             position: absolute;
             top: 50%;
         }
+        .spotify-link{
+            position: absolute;
+            bottom: 0;
+        }
     }
     .div2 { 
         grid-area: 1 / 3 / 2 / 4; 
@@ -40,7 +44,7 @@ export const BoxesWrapper = styled.section`
         .teste{
         position: relative;
         overflow: hidden;
-        min-height: 5rem;
+        min-height: 7rem;
         display: flex;
         align-items: flex-end;
         }
@@ -66,7 +70,7 @@ export const BoxesWrapper = styled.section`
          background-color:#2b2c28;
          color: var(--text-color);
          border-radius: 1rem;
-         min-height: 5rem;
+         min-height: 7rem;
          display: flex;
          align-items: flex-end;
     
@@ -76,7 +80,7 @@ export const BoxesWrapper = styled.section`
         grid-area: 2 / 3 / 3 / 5;
         background-color:#fffafb;
          color: #131515; 
-         min-height: 5rem;
+         min-height: 7rem;
          display: flex;
          border-radius: 1rem;
          align-items: flex-end;
