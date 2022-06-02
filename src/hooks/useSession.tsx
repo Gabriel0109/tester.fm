@@ -49,7 +49,7 @@ export function SessionProvider({ children }){
                         Authorization: `Bearer ${token}`
                     },
                 }).then(response => {
-                    console.log(response)
+                    console.log(response.data.item)
 
                 })
             } catch{
@@ -64,6 +64,7 @@ export function SessionProvider({ children }){
     const logout = () => {
         setToken("")
         window.localStorage.removeItem("token")
+        document.location.reload();
     }
 
 

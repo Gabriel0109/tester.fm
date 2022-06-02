@@ -4,6 +4,9 @@ export const IntroWrapper = styled.nav`
     display: flex;
     justify-content: center;
     align-items: center;
+    h1{
+        margin-right: 1rem;
+    }
     a{
         color: #fff;
     }
