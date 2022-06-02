@@ -4,7 +4,7 @@ import { useSession } from '../../hooks/useSession.tsx'
 import { Button, LoginBtn } from './styles.js'
 
 
-export function SignInButton() {
+export default function SignInButton() {
     const { user, CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, SCOPES, token, logout } = useSession()
     return (
         <>
@@ -27,21 +27,4 @@ export function SignInButton() {
     )
     
     
-    
-    // token ? (
-
-    //     <Button type="button" onClick={logout}>
-    //         <FaSpotify color="#04d361" />
-    //         {user}
-    //         <FiX color="#737380"  />
-    //     </Button>
-    // ) : (
-    //     <Button type="button"
-    //             href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&scope=${SCOPES}&response_type=${RESPONSE_TYPE}`}
-    //     >
-    //         <FaSpotify color="#eba417" />
-    //         Sign In with Spotify
-
-    //     </Button>
-    // )
 }

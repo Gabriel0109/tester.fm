@@ -1,6 +1,6 @@
 import { IntroWrapper } from './styles.js';
 import { SignInButton } from '../signInButton/index.jsx';
-export function Header() {
+export default function Header() {
     return (
         <>
             <IntroWrapper>

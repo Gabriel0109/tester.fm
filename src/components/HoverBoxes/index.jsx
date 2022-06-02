@@ -4,7 +4,7 @@ import { Box2 } from './box2/index.jsx'
 import { Box3 } from './box3/index.jsx'
 import { Box4 } from './box4/index.jsx'
 
-export function HoverBoxes() {
+export default function HoverBoxes() {
 
     return (
         <BoxesWrapper>
