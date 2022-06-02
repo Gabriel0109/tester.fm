@@ -1,6 +1,6 @@
-import {Header} from '../src/components/Header/Header.jsx'
-import {SessionProvider} from '../src/hooks/useSession.tsx'
-import { HoverBoxes } from '../src/components/HoverBoxers/index.jsx';
+import { Header } from './components/Header/Header'
+import { SessionProvider } from './hooks/useSession.tsx'
+import { HoverBoxes } from './components/HoverBoxers/index.jsx';
 import './globals.css';
 function App() {
 
