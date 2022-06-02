@@ -1,14 +1,14 @@
 import './globals.css';
 import {Header} from './components/Header/index.jsx'
-import {sessionProvider} from './hooks/useSession.jsx'
+import {SessionProvider} from './hooks/useSession.tsx'
 import { HoverBoxes } from './components/HoverBoxers/index.jsx';
 function App() {
 
   return (
-    <sessionProvider>
+    <SessionProvider>
       <Header />
       <HoverBoxes />
-    </sessionProvider>
+    </SessionProvider>
   )
 }
 
