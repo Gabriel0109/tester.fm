@@ -1,8 +1,8 @@
 import { BoxesWrapper } from './styles.js'
-import { Box1 } from './box1/'
-import { Box2 } from './box2/'
-import { Box3 } from './box3/'
-import { Box4 } from './box4/'
+import { Box1 } from './box1/index.jsx'
+import { Box2 } from './box2/index.jsx'
+import { Box3 } from './box3/index.jsx'
+import { Box4 } from './box4/index.jsx'
 
 export function HoverBoxes() {
 
