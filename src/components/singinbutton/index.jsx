@@ -4,7 +4,7 @@ import { useSession } from '../../hooks/useSession.tsx'
 import { Button, LoginBtn } from './styles.js'
 
 
-export default function SignInButton() {
+export function SignInButton() {
     const { user, CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, SCOPES, token, logout } = useSession()
     return (
         <>
