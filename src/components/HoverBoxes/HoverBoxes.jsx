@@ -5,7 +5,7 @@ import { BoxesWrapper } from './styles.js';
 // import { Box4 } from './box4/index.jsx';
 
 
-export function HoverBoxes() {
+export function Hoverboxes() {
 
     return (
         <BoxesWrapper>
