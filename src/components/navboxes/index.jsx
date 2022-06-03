@@ -1,5 +1,5 @@
  import {BoxesWrapper} from './styles.js'
- 
+ import { FaSpotify } from 'react-icons/fa'
  
  export function Navboxes(){
       return(<BoxesWrapper>
