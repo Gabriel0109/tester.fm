@@ -1,26 +1,40 @@
- import {BoxesWrapper} from './styles.js'
- import { FaSpotify } from 'react-icons/fa'
- 
- export function Navboxes(){
-      return(<BoxesWrapper>
-            <div className="div1">
+import { BoxesWrapper } from './styles.js'
+import { Box1 } from './box1/index.jsx'
+import { Box2 } from './box2/index.jsx'
+import { Box3 } from './box3/index.jsx'
+import { Box4 } from './box4/index.jsx'
+
+export function Navboxes() {
+
+    return (<>
+        <BoxesWrapper>
+            <Box1>
                 <h1>1</h1>
-              <div className="spotify-logo">
-                  <a href="">
-                      <FaSpotify />
-                      <p>Open in Spotify</p>
-                  </a>
-              </div>
-            </div>
-            <div className="div2">
-                2
-            </div>
-            <div className="div3">
-                3
-            </div>
-            <div className="div4">
-                4
-            </div>
-          </BoxesWrapper>
-      )
-  }
+                <div className="text-flow">
+                    teste teste teste
+                </div>
+            </Box1>
+            <Box2 />
+
+
+
+            <Box3>
+                <h1>3</h1>
+                <div className="text-flow">
+                    teste teste teste
+                </div>
+            </Box3>
+
+            <Box4>
+                <h1>4</h1>
+                <div className="text-flow">
+                    teste teste teste
+                </div>
+            </Box4>
+
+        </BoxesWrapper>
+    </>
+
+    )
+
+}
