@@ -9,9 +9,7 @@ interface contextInterface {
     AUTH_ENDPOINT: string;
     RESPONSE_TYPE: string;
     SCOPES: string[];
-    logout: () => void
-    
-  
+    logout: () => void 
 
 }
 const loginContext = createContext<contextInterface>({} as contextInterface)
