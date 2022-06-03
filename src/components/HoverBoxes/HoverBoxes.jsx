@@ -7,10 +7,6 @@ import { BoxesWrapper } from './styles.js';
 
 export function Hoverboxes() {
 
-    return (
-        <BoxesWrapper>
-        teste
-        </BoxesWrapper>
-    );
+    return <BoxesWrapper>teste</BoxesWrapper>;
 
 }
