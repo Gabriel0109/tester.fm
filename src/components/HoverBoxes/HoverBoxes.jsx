@@ -10,7 +10,6 @@ export function HoverBoxes() {
     return (
         <BoxesWrapper>
         teste
-
         </BoxesWrapper>
     );
 
