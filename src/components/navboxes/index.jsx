@@ -5,6 +5,7 @@ import { Box3 } from './box3/index.jsx'
 import { Box4 } from './box4/index.jsx'
 import { FaSpotify } from 'react-icons/fa'
 import { useSession } from "../../hooks/useSession";
+import logo from '../../public/imgs/nomusic.png'
 
 
 
@@ -15,22 +16,23 @@ export function Navboxes() {
         <BoxesWrapper>
             <Box1>
                 <div>
-                    {!token ? 
-                     <p>sem musica</p>
+                    {!token ?
+                     <><img src={logo} alt="Logo" /><p>sem musica</p></>
                     :
                     <p>
                         {playingData.item.name}
+                            <div className="spotify-logo">
+                                <button href="" onClick={refresh} >
+                                    <FaSpotify />
+                                    <p>Atualizar</p>
+                                </button>
+                            </div>
                     </p> }
                     
                  
                   
                 </div>  
-                <div className="spotify-logo">
-                    <button href="" onClick={refresh} >
-                        <FaSpotify />
-                        <p>Open in Spotify</p>
-                    </button>
-                </div>
+
             </Box1>
             <Box2 />
 
