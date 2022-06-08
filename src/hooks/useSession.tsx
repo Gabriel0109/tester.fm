@@ -34,7 +34,7 @@ export function SessionProvider({ children }){
     const SCOPES = ["user-read-currently-playing", "user-read-recently-played"]
     const [token, setToken] = useState("")
     const [user, setUser] = useState("")
-    const [playingData, setPlayingData] = useState()
+    const [playingData, setPlayingData] = useState({item:{}})
 
     useEffect(() => {
         const hash = window.location.hash
@@ -60,7 +60,7 @@ export function SessionProvider({ children }){
             //         Authorization: `Bearer ${token}`
             //     },
             // }).then(response => {
-            //     console.log(response.data.item)
+            //     
 
             // })
             let one = "https://api.spotify.com/v1/me"
@@ -90,7 +90,7 @@ export function SessionProvider({ children }){
                         const responseThree = responses[2];
                         setUser(responseOne.data.id)
                       setPlayingData(responseTwo.data)
-                      console.log(responseThree)
+                      console.log(responseTwo)
                     })
                 )
         } catch {
@@ -111,7 +111,7 @@ export function SessionProvider({ children }){
                         Authorization: `Bearer ${token}`
                     },
                 }).then(response => {
-                    console.log(response.data)
+                    setPlayingData(response.data)
 
                 })
     }

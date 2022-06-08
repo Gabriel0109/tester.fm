@@ -7,16 +7,23 @@ import { FaSpotify } from 'react-icons/fa'
 import { useSession } from "../../hooks/useSession";
 
 
-export function Navboxes() {
-    const { refresh, playingData } = useSession()
 
+
+export function Navboxes() {
+    const { refresh, playingData, token} = useSession()
     return (<>
         <BoxesWrapper>
             <Box1>
                 <div>
+                    {!token ? 
+                     <p>sem musica</p>
+                    :
                     <p>
                         {playingData.item.name}
-                    </p>
+                    </p> }
+                    
+                 
+                  
                 </div>  
                 <div className="spotify-logo">
                     <button href="" onClick={refresh} >
