@@ -9,6 +9,15 @@ interface contextInterface {
     AUTH_ENDPOINT: string;
     RESPONSE_TYPE: string;
     SCOPES: string[];
+    playingData: {
+        item: {
+            id: string,
+            name: string,
+            href: string,
+
+        }
+    }
+
     logout: () => void 
     refresh: () => void 
 
@@ -25,6 +34,8 @@ export function SessionProvider({ children }){
     const SCOPES = ["user-read-currently-playing", "user-read-recently-played"]
     const [token, setToken] = useState("")
     const [user, setUser] = useState("")
+    const [playingData, setPlayingData] = useState()
+
     useEffect(() => {
         const hash = window.location.hash
         let token = localStorage.getItem("token")
@@ -78,7 +89,7 @@ export function SessionProvider({ children }){
                         const responseTwo = responses[1];
                         const responseThree = responses[2];
                         setUser(responseOne.data.id)
-                      console.log(responseTwo.data)
+                      setPlayingData(responseTwo.data)
                       console.log(responseThree)
                     })
                 )
@@ -107,7 +118,7 @@ export function SessionProvider({ children }){
 
 
 
-    return ( <loginContext.Provider value={{CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, refresh }}>
+    return ( <loginContext.Provider value={{CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, refresh, playingData }}>
             {children}
              </loginContext.Provider>
         

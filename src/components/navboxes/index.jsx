@@ -8,11 +8,16 @@ import { useSession } from "../../hooks/useSession";
 
 
 export function Navboxes() {
-    const { refresh } = useSession()
+    const { refresh, playingData } = useSession()
 
     return (<>
         <BoxesWrapper>
             <Box1>
+                <div>
+                    <p>
+                        {playingData.item.name}
+                    </p>
+                </div>  
                 <div className="spotify-logo">
                     <button href="" onClick={refresh} >
                         <FaSpotify />
