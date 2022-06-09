@@ -88,7 +88,7 @@ export function SessionProvider({ children }) {
             async function load() {
                 let one = "https://api.spotify.com/v1/me"
                 let two = "https://api.spotify.com/v1/me/player/currently-playing"
-                let three = "https://api.spotify.com/v1/me/player/recently-played?limit=5"
+                let three = "https://api.spotify.com/v1/me/player/recently-played?limit=15"
                 const requestOne = await axios.get(one, {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -113,9 +113,8 @@ export function SessionProvider({ children }) {
                             const responseThree = responses[2];
                             setUser(responseOne.data.id)
                             setPlayingData(responseTwo.data)
-                            // console.log(responseTwo.data)
-                            console.log(responseThree.data.items)
                             setRecently(responseThree.data)
+                            console.log(responseThree.data.items)
                         })
                     )
             }

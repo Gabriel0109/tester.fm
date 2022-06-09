@@ -16,7 +16,9 @@ export function Navboxes() {
             <Box1>
                 <h1>Tocando Agora</h1>
             </Box1>
-            <Box2 />
+            <Box2>
+                {/* <h3>Tocadas Recentemente</h3> */}
+            </Box2>
 
             <Box3>
                 <h1>3</h1>
@@ -25,9 +27,7 @@ export function Navboxes() {
                 </div>
             </Box3>
             <Box4>
-                <div className="text-flow">
-            
-                </div>
+            <h3>Tocadas Recentemente</h3>
             </Box4>
 
         </BoxesWrapper>

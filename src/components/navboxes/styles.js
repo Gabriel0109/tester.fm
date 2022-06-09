@@ -36,29 +36,9 @@ export const BoxesWrapper = styled.section`
         background-color:#339989;
         color: #131515; 
         border-radius: 1rem;
-        .teste{
-        position: relative;
-        overflow: hidden;
-        min-height: 7rem;
-        display: flex;
-        align-items: flex-end;
+        h3{
+            margin-top: 0
         }
-
-        .text-flow{
-            top: 0;
-            width: 100%;
-            right: 0;
-            left: 0;
-            display: flex;
-            justify-content: flex-end;
-            align-items:center;
-            height: 100%;
-            bottom: 0;
-            position: absolute;
-            font-size: 6rem;
-            background-color: #339989
-         
-        }   
     }
 /*=============*/
     .div3 {
@@ -77,11 +57,13 @@ export const BoxesWrapper = styled.section`
         background-color:#fffafb;
          color: #131515; 
          min-height: 7rem;
-         display: flex;
          border-radius: 1rem;
          position: relative;
+         h3{
+             margin-block: 0;
+         }
 
-         align-items: flex-end;
+         /* align-items: flex-end;  */
      
    
          }
@@ -115,5 +97,22 @@ export const ArtistName = styled.ul`
 `
 export const NoMusicWrap = styled.p`
 `
+export const RecentlyListWrapper = styled.div`
+    /* list-style: none; */
+    height: 5rem;
+    overflow: scroll;
+`
 export const RecentlyList = styled.ul`
+    list-style: none;
+    padding-left: 0;
+    li{
+        margin-block: .5rem;
+        padding-block: 1rem;
+        display: flex;
+        align-items: center;
+        a{
+            padding-left: .4rem;
+        }
+        /* font-size: .8rem; */
+    }
 `
