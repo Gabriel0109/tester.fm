@@ -4,7 +4,7 @@ import { useContext } from 'react';
 interface Images {
     url: string;
 }
-interface AlbumInfo {
+interface AlbumImg {
     images: Images[];
 }
 interface ArtistsInterface {
@@ -27,7 +27,7 @@ interface playingDataInterface {
             spotify: string;
         },
         artists: ArtistTest
-        album: AlbumInfo
+        album: AlbumImg
     }
 }
 interface contextInterface {

@@ -60,6 +60,7 @@ export const BoxesWrapper = styled.section`
          
         }   
     }
+/*=============*/
     .div3 {
          grid-area: 1 / 4 / 2 / 5;
          background-color:#2b2c28;
@@ -70,7 +71,7 @@ export const BoxesWrapper = styled.section`
          align-items: flex-end;
     
         }
-      
+/*=============*/
     .div4 { 
         grid-area: 2 / 3 / 3 / 5;
         background-color:#fffafb;
@@ -84,6 +85,7 @@ export const BoxesWrapper = styled.section`
      
    
          }
+/*=============*/
 `
 export const AlbumWrapper = styled.div`
     display: flex;

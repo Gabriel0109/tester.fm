@@ -1,73 +1,20 @@
-import { BoxesWrapper, AlbumWrapper, SongName, ArtistName, InfoContent } from './styles.js'
+import { BoxesWrapper } from './styles.js'
 import { Box1 } from './box1/index.jsx'
 import { Box2 } from './box2/index.jsx'
 import { Box3 } from './box3/index.jsx'
 import { Box4 } from './box4/index.jsx'
-import { FaSpotify } from 'react-icons/fa'
-import { useEffect } from 'react'
-import { useSession } from "../../hooks/useSession";
-import logo from '../../public/imgs/nomusic.png'
+
 
 
 
 
 export function Navboxes() {
-    const { playingData, refresh } = useSession()
 
-    useEffect(() => {
-
-        if (playingData.item) {
-            console.log('fora', playingData)
-        }
-    }, [playingData])
 
     return (<>
         <BoxesWrapper>
             <Box1>
                 <h1>Tocando Agora</h1>
-            {!playingData.item ?
-                        <AlbumWrapper>
-                            <img src={logo} width="220" height="220" alt="Logo" />
-                            <InfoContent>
-                                <SongName>sem musica</SongName>
-                                <ArtistName>
-                                    sem artista
-                                </ArtistName>
-                            </InfoContent>
-                        </AlbumWrapper>
-                        :
-                        <>
-                            <AlbumWrapper>
-                                <img src={playingData.item.album.images[1].url} width="220" height="220" alt="Logo" />
-                                <InfoContent>
-                                    <SongName>
-                                        <a href= {playingData.item.external_urls.spotify} target="_blank">
-                                        {playingData.item.name}
-                                        </a>
-                                       
-                                    </SongName>
-                                    <ArtistName>
-                                        {playingData.item.artists
-                                            .map((item) => (
-                                                <li>
-                                                    <a href={item.external_urls.spotify} target="_blank">
-                                                        {item.name}
-                                                    </a>
-                                                </li>
-                                            ))
-                                            .reduce((prev, curr) => [prev, ', ', curr])
-                                        }
-                                    </ArtistName>
-                                </InfoContent>
-                                {/* <button onClick={refresh}>
-                                teste
-                            </button> */}
-                            </AlbumWrapper>
-                            <a className="linkToSong" href={playingData.item.external_urls.spotify} target="_blank">Open in Spotify</a>
-
-                        </>
-                    }
-
             </Box1>
             <Box2 />
 
