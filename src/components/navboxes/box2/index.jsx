@@ -18,11 +18,14 @@ export function Box2({ children }) {
     useEffect(() => {
         boxTween2.current = gsap.to(boxRef2.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
     }, [])
-    useEffect(() => {
-        if(recently){
-            console.log(recently.items)
-        }
-    }, [])
+ 
+      
+//   useEffect(() => {
+
+//     if(recently.items){
+//         console.log('fora', recently) 
+//     }
+//   }, [])
     function handleEnter2() {
         boxTween2.current.play()
 
@@ -38,18 +41,10 @@ export function Box2({ children }) {
                 teste
             </NoMusicWrap> : <>
                 <RecentlyList>
-                    {recently.items
-                                .map((item) => (
-                                    <li key={item.id}>
-                                        <img src={item.album.images.url} alt="" />
-                                        <a href={item.external_urls.spotify} target="_blank">
-                                    {item.name}
-                                </a>
-                                <p>{item.artists.name}</p>
-                                    </li>   
-                                ))
-                                .reduce((prev, curr) => [prev, <hr></hr>, curr])
-                    }
+                    {recently.items.map((i) => (
+                    <li key={i.id}>{i.track.name}</li>
+                    ))}
+                  
                 </RecentlyList>
             </>
             }

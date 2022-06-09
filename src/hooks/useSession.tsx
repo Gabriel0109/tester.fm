@@ -18,7 +18,7 @@ interface ArtistInterface {
     artistsArray: ArtistsInterface[]
 }
 interface recentlyPlayedArray {
-    
+    track: {
         id: string,
         name: string,
         href: string,
@@ -27,6 +27,8 @@ interface recentlyPlayedArray {
         },
         artists: ArtistInterface
         album: AlbumImg
+    }
+       
 }
 
 interface recentlyPlayedInterface {
@@ -111,8 +113,8 @@ export function SessionProvider({ children }) {
                             const responseThree = responses[2];
                             setUser(responseOne.data.id)
                             setPlayingData(responseTwo.data)
-                            console.log(responseTwo.data)
-                            console.log(responseThree.data)
+                            // console.log(responseTwo.data)
+                            console.log(responseThree.data.items)
                             setRecently(responseThree.data)
                         })
                     )
