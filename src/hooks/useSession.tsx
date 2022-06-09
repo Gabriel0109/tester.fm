@@ -52,7 +52,7 @@ export function SessionProvider({ children }){
     const REDIRECT_URI = "http://localhost:3000"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
-    const SCOPES = ["user-read-currently-playing", "user-read-recently-played"]
+    const SCOPES = ["user-read-currently-playing", "user-read-recently-played", "user-modify-playback-state"]
     const [token, setToken] = useState("")
     const [user, setUser] = useState("")
     const [playingData, setPlayingData] = useState<playingDataInterface>({} as playingDataInterface)

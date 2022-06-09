@@ -24,26 +24,10 @@ export function Navboxes() {
     return (<>
         <BoxesWrapper>
             <Box1>
-                <div>
-
-
-
-                </div>
-
-            </Box1>
-            <Box2 />
-
-            <Box3>
-                <h1>3</h1>
-                <div className="text-flow">
-                    teste teste teste
-                </div>
-            </Box3>
-            <Box4>
-                <div className="text-flow">
-                    {!playingData.item ?
+                <h1>Tocando Agora</h1>
+            {!playingData.item ?
                         <AlbumWrapper>
-                            <img src={logo} width="120" height="120" alt="Logo" />
+                            <img src={logo} width="220" height="220" alt="Logo" />
                             <InfoContent>
                                 <SongName>sem musica</SongName>
                                 <ArtistName>
@@ -54,10 +38,13 @@ export function Navboxes() {
                         :
                         <>
                             <AlbumWrapper>
-                                <img src={playingData.item.album.images[0].url} width="120" height="120" alt="Logo" />
+                                <img src={playingData.item.album.images[1].url} width="220" height="220" alt="Logo" />
                                 <InfoContent>
                                     <SongName>
+                                        <a href= {playingData.item.external_urls.spotify} target="_blank">
                                         {playingData.item.name}
+                                        </a>
+                                       
                                     </SongName>
                                     <ArtistName>
                                         {playingData.item.artists
@@ -70,7 +57,6 @@ export function Navboxes() {
                                             ))
                                             .reduce((prev, curr) => [prev, ', ', curr])
                                         }
-
                                     </ArtistName>
                                 </InfoContent>
                                 {/* <button onClick={refresh}>
@@ -81,6 +67,19 @@ export function Navboxes() {
 
                         </>
                     }
+
+            </Box1>
+            <Box2 />
+
+            <Box3>
+                <h1>3</h1>
+                <div className="text-flow">
+                    teste teste teste
+                </div>
+            </Box3>
+            <Box4>
+                <div className="text-flow">
+            
                 </div>
             </Box4>
 

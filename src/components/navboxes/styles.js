@@ -11,14 +11,10 @@ export const BoxesWrapper = styled.section`
         border-radius: 1rem;
         transition: scale 0.5s;
         padding: 2rem;
-         font-size: 1.8rem;
         font-weight: bold;
-        h1{
-            margin-bottom: 0;
-        }
- 
-    
     }
+
+/*=============*/
     .div1 { 
         grid-area: 1 / 1 / 3 / 3; 
         background-color:#7de2d1;
@@ -26,23 +22,15 @@ export const BoxesWrapper = styled.section`
         border-radius: 1rem;
         position: relative;
         overflow: hidden;
-        .text-flow{
-            position: absolute;
-            top: 50%;
-        }
-        .spotify-logo{
-            position: absolute;
-            bottom: 0;
-            a{
-                display: flex;
-                align-items: center;
-                color: var(--text-color);
-                p{
-                    margin-left: .5rem;
-                }
-            }
-        }
+
+        .linkToSong{
+        position: absolute;
+        font-size: .7rem;
+        bottom: 2rem;
+        right: 2rem;
+      }
     }
+/*=============*/
     .div2 { 
         grid-area: 1 / 3 / 2 / 4; 
         background-color:#339989;
@@ -93,37 +81,13 @@ export const BoxesWrapper = styled.section`
          position: relative;
 
          align-items: flex-end;
-         .linkToSong{
-        position: absolute;
-        font-size: .7rem;
-        bottom: 2rem;
-        right: 2rem;
-    }
+     
    
-         }
-
-         .major{
-             position: absolute;
-             top: 0;
-             bottom: 0;
-             left: 0;
-             padding: 3rem;
-             right: 0;
-             transform: scale(0);
-             display: flex;
-             justify-content: center;
-             div{
-                     background-color:#7de2d1;
-                     color: var(--text-color);
-                     width: 90%;
-                     height: 90%;
-
-             }
-
          }
 `
 export const AlbumWrapper = styled.div`
     display: flex;
+    align-items: center;
     position: relative;
 
    
@@ -133,9 +97,10 @@ export const InfoContent = styled.div`
     flex-direction: column;
     margin-inline: 1rem;
 `
-export const SongName = styled.p`
+export const SongName = styled.h2`
     font-weight: bold;
-    margin-bottom: 0
+
+    margin-bottom: 0;
 `
 export const ArtistName = styled.ul`
     font-size: .8rem;
