@@ -52,24 +52,35 @@ export function Navboxes() {
                             </InfoContent>
                         </AlbumWrapper>
                         :
-                            <>
+                        <>
                             <AlbumWrapper>
-                            <img src={playingData.item.album.images[0].url} width="120" height="120" alt="Logo" />
-                            <InfoContent>
-                                <SongName>
-                                    {playingData.item.name}
-                                </SongName>
-                                <ArtistName>
-                                    {playingData.item.artists[0].name}
-                                </ArtistName>
-                            </InfoContent>
-                            <button onClick={refresh}>
+                                <img src={playingData.item.album.images[0].url} width="120" height="120" alt="Logo" />
+                                <InfoContent>
+                                    <SongName>
+                                        {playingData.item.name}
+                                    </SongName>
+                                    <ArtistName>
+                                        {playingData.item.artists
+                                            .map((item) => (
+                                                <li>
+                                                    <a href={item.external_urls.spotify} target="_blank">
+                                                        {item.name}
+                                                    </a>
+                                                </li>
+                                            ))
+                                            .reduce((prev, curr) => [prev, ', ', curr])
+                                        }
+
+                                    </ArtistName>
+                                </InfoContent>
+                                {/* <button onClick={refresh}>
                                 teste
-                            </button>
-                        </AlbumWrapper>
-                        <a className="linkToSong" href={playingData.item.external_urls.spotify} target="_blank">Open in Spotify</a>
+                            </button> */}
+                            </AlbumWrapper>
+                            <a className="linkToSong" href={playingData.item.external_urls.spotify} target="_blank">Open in Spotify</a>
+
                         </>
-                        }
+                    }
                 </div>
             </Box4>
 

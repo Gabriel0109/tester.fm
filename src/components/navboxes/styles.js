@@ -16,6 +16,7 @@ export const BoxesWrapper = styled.section`
         h1{
             margin-bottom: 0;
         }
+ 
     
     }
     .div1 { 
@@ -89,7 +90,15 @@ export const BoxesWrapper = styled.section`
          min-height: 7rem;
          display: flex;
          border-radius: 1rem;
+         position: relative;
+
          align-items: flex-end;
+         .linkToSong{
+        position: absolute;
+        font-size: .7rem;
+        bottom: 2rem;
+        right: 2rem;
+    }
    
          }
 
@@ -115,6 +124,8 @@ export const BoxesWrapper = styled.section`
 `
 export const AlbumWrapper = styled.div`
     display: flex;
+    position: relative;
+
    
 `
 export const InfoContent = styled.div`
@@ -126,6 +137,12 @@ export const SongName = styled.p`
     font-weight: bold;
     margin-bottom: 0
 `
-export const ArtistName = styled.p`
-    font-size: .8rem
+export const ArtistName = styled.ul`
+    font-size: .8rem;
+    list-style: none;
+    display: flex;
+    padding-left: 0;
+    li{
+        padding-left: .2rem
+    }
 `

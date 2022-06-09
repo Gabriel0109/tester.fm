@@ -10,6 +10,9 @@ interface AlbumInfo {
 interface ArtistsInterface {
     href: string;
     name: string;
+    external_urls: {
+        spotify: string;
+    },
   
 }
 interface ArtistTest {
