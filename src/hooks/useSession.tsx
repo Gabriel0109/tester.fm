@@ -10,8 +10,6 @@ interface playingDataInterface {
         name: string,
         href: string,
         album: AlbumInfo
-    
-
     }
 }
 interface Images {
@@ -29,7 +27,6 @@ interface contextInterface {
     playingData: playingDataInterface;
     logout: () => void 
     refresh: () => void 
-
 }
 const loginContext = createContext<contextInterface>({} as contextInterface)
 
@@ -83,8 +80,8 @@ export function SessionProvider({ children }){
                         const responseThree = responses[2];
                         setUser(responseOne.data.id)
                       setPlayingData(responseTwo.data)
-                      console.log(responseTwo.data.item.album.images[0].url)
-                      console.log(playingData)
+                    //   console.log(responseTwo.data)
+                    //   console.log(playingData)
                     //   console.log(responseThree)
                     })
                 )

@@ -4,6 +4,7 @@ import { Box2 } from './box2/index.jsx'
 import { Box3 } from './box3/index.jsx'
 import { Box4 } from './box4/index.jsx'
 import { FaSpotify } from 'react-icons/fa'
+import {useEffect} from 'react'
 import { useSession } from "../../hooks/useSession";
 import logo from '../../public/imgs/nomusic.png'
 
@@ -11,13 +12,20 @@ import logo from '../../public/imgs/nomusic.png'
 
 
 export function Navboxes() {
-    const { refresh, playingData, token } = useSession()
-  console.log('fora', playingData)
+    const { playingData, token } = useSession()
+  
+  useEffect(() => {
+   
+    if(playingData.item){
+        console.log('fora', playingData) 
+    }
+  }, [playingData])
+  
     return (<>
-    {!playingData ? <h1>oi</h1> :       <BoxesWrapper>
+     <BoxesWrapper>
             <Box1>
                 <div>
-                    {!token ?
+                    {!playingData.item ?
                         <AlbumWrapper>
                             <img src={logo} alt="Logo" />
                             <InfoContent>
@@ -40,17 +48,12 @@ export function Navboxes() {
                                     </ArtistName>
                                 </InfoContent>
                             </AlbumWrapper>
-
                         </p>}
-
-
 
                 </div>
 
             </Box1>
             <Box2 />
-
-
 
             <Box3>
                 <h1>3</h1>
@@ -58,7 +61,6 @@ export function Navboxes() {
                     teste teste teste
                 </div>
             </Box3>
-
             <Box4>
                 <h1>4</h1>
                 <div className="text-flow">
@@ -66,7 +68,7 @@ export function Navboxes() {
                 </div>
             </Box4>
 
-        </BoxesWrapper> }
+        </BoxesWrapper> 
   
     </>
 
