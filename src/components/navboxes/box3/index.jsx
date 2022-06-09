@@ -8,14 +8,14 @@ export function Box3({ children }) {
     const boxTween3 = useRef(null)
     useEffect(() => {
         boxTween3.current = gsap.to(boxRef3.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
-        gsap.to(".div3", {
-            x: 300, ease: 'linear', opacity: 0, scrollTrigger: {
-                trigger: ".div1",
-                toggleActions: "play none reverse none",
-                start: " top+=280 center",
-                scrub: true,
-            }
-        })
+        // gsap.to(".div3", {
+        //     x: 300, ease: 'linear', opacity: 0, scrollTrigger: {
+        //         trigger: ".div1",
+        //         toggleActions: "play none reverse none",
+        //         start: " top+=280 center",
+        //         scrub: true,
+        //     }
+        // })
     }, [])
     function handleEnter3() {
         boxTween3.current.play()

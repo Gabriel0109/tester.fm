@@ -1,20 +1,31 @@
 import {createContext, useEffect, useState} from 'react';
 import axios from 'axios'
 import { useContext } from 'react';
+interface Images {
+    url: string;
+}
 interface AlbumInfo {
     images: Images[];
+}
+interface ArtistsInterface {
+    href: string;
+    name: string;
+  
+}
+interface ArtistTest {
+    artistsArray: ArtistsInterface[]
 }
 interface playingDataInterface {
     item: {
         id: string,
         name: string,
         href: string,
+        external_urls: {
+            spotify: string;
+        },
+        artists: ArtistTest
         album: AlbumInfo
     }
-}
-interface Images {
-    url: string;
-    
 }
 interface contextInterface {
     user: string;
@@ -28,6 +39,7 @@ interface contextInterface {
     logout: () => void 
     refresh: () => void 
 }
+
 const loginContext = createContext<contextInterface>({} as contextInterface)
 
 
@@ -80,7 +92,7 @@ export function SessionProvider({ children }){
                         const responseThree = responses[2];
                         setUser(responseOne.data.id)
                       setPlayingData(responseTwo.data)
-                    //   console.log(responseTwo.data)
+                      console.log(responseTwo.data) 
                     //   console.log(playingData)
                     //   console.log(responseThree)
                     })

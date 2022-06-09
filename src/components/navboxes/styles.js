@@ -115,6 +115,7 @@ export const BoxesWrapper = styled.section`
 `
 export const AlbumWrapper = styled.div`
     display: flex;
+   
 `
 export const InfoContent = styled.div`
     display: flex;
