@@ -113,3 +113,7 @@ export const ArtistName = styled.ul`
         padding-left: .2rem
     }
 `
+export const NoMusicWrap = styled.p`
+`
+export const RecentlyList = styled.ul`
+`
