@@ -1,6 +1,23 @@
 import {createContext, useEffect, useState} from 'react';
 import axios from 'axios'
 import { useContext } from 'react';
+interface AlbumInfo {
+    images: Images[];
+}
+interface playingDataInterface {
+    item: {
+        id: string,
+        name: string,
+        href: string,
+        album: AlbumInfo
+    
+
+    }
+}
+interface Images {
+    url: string;
+    
+}
 interface contextInterface {
     user: string;
     token: string;
@@ -9,15 +26,7 @@ interface contextInterface {
     AUTH_ENDPOINT: string;
     RESPONSE_TYPE: string;
     SCOPES: string[];
-    playingData: {
-        item: {
-            id: string,
-            name: string,
-            href: string,
-
-        }
-    }
-
+    playingData: playingDataInterface;
     logout: () => void 
     refresh: () => void 
 
@@ -34,7 +43,7 @@ export function SessionProvider({ children }){
     const SCOPES = ["user-read-currently-playing", "user-read-recently-played"]
     const [token, setToken] = useState("")
     const [user, setUser] = useState("")
-    const [playingData, setPlayingData] = useState({item:{}})
+    const [playingData, setPlayingData] = useState<playingDataInterface>({} as playingDataInterface)
 
     useEffect(() => {
         const hash = window.location.hash
@@ -46,57 +55,47 @@ export function SessionProvider({ children }){
             localStorage.setItem("token", token)
         }
         try {
-            // const url = "https://api.spotify.com/v1/me";
-            // axios.get(url, {
-            //     headers: {
-            //         Authorization: `Bearer ${token}`
-            //     },
-            // }).then(response => {
-            //     setUser(response.data.id)
-            // })
-                // const url2 = "https://api.spotify.com/v1/me/player/currently-playing";
-            // axios.get(url2, {
-            //     headers: {
-            //         Authorization: `Bearer ${token}`
-            //     },
-            // }).then(response => {
-            //     
-
-            // })
+        async function load() {
             let one = "https://api.spotify.com/v1/me"
             let two = "https://api.spotify.com/v1/me/player/currently-playing"
             let three = "https://api.spotify.com/v1/me/player/recently-played?limit=5"
-            const requestOne = axios.get(one, {
+            const requestOne = await axios.get(one, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 } );
-            const requestTwo = axios.get(two, {
+            const requestTwo = await axios.get(two, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
             });
-            const requestThree = axios.get(three, {
+            const requestThree = await axios.get(three, {
                 headers: {
                     Authorization: `Bearer ${token}`
                 },
             });
-            axios
+          await axios
                 .all([requestOne, requestTwo, requestThree])
                 .then(
-                    axios.spread((...responses) => {
+                 await axios.spread((...responses) => {
                         const responseOne = responses[0];
                         const responseTwo = responses[1];
                         const responseThree = responses[2];
                         setUser(responseOne.data.id)
                       setPlayingData(responseTwo.data)
-                      console.log(responseTwo)
+                      console.log(responseTwo.data.item.album.images[0].url)
+                      console.log(playingData)
+                    //   console.log(responseThree)
                     })
                 )
+        }
+        load()
+
         } catch {
             return console.log('oi')
         }
         setToken(token)
+       
     }, [])
 
     const logout = () => {

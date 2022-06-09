@@ -1,4 +1,4 @@
-import { BoxesWrapper } from './styles.js'
+import { BoxesWrapper, AlbumWrapper, SongName, ArtistName, InfoContent } from './styles.js'
 import { Box1 } from './box1/index.jsx'
 import { Box2 } from './box2/index.jsx'
 import { Box3 } from './box3/index.jsx'
@@ -11,27 +11,41 @@ import logo from '../../public/imgs/nomusic.png'
 
 
 export function Navboxes() {
-    const { refresh, playingData, token} = useSession()
+    const { refresh, playingData, token } = useSession()
+  console.log('fora', playingData)
     return (<>
-        <BoxesWrapper>
+    {!playingData ? <h1>oi</h1> :       <BoxesWrapper>
             <Box1>
                 <div>
                     {!token ?
-                     <><img src={logo} alt="Logo" /><p>sem musica</p></>
-                    :
-                    <p>
-                        {playingData.item.name}
-                            <div className="spotify-logo">
-                                <button href="" onClick={refresh} >
-                                    <FaSpotify />
-                                    <p>Atualizar</p>
-                                </button>
-                            </div>
-                    </p> }
-                    
-                 
-                  
-                </div>  
+                        <AlbumWrapper>
+                            <img src={logo} alt="Logo" />
+                            <InfoContent>
+                                <SongName>sem musica</SongName>
+                                <ArtistName>
+                                    sem artista
+                                </ArtistName>
+                            </InfoContent>
+                        </AlbumWrapper>
+                        :
+                        <p>
+                            <AlbumWrapper>
+                                <img src={playingData.item.album.images[0].url} alt="Logo" />
+                                <InfoContent>
+                                    <SongName>                     
+                                    {playingData.item.name}
+                                    </SongName>
+                                    <ArtistName>
+                                        sem artista
+                                    </ArtistName>
+                                </InfoContent>
+                            </AlbumWrapper>
+
+                        </p>}
+
+
+
+                </div>
 
             </Box1>
             <Box2 />
@@ -52,7 +66,8 @@ export function Navboxes() {
                 </div>
             </Box4>
 
-        </BoxesWrapper>
+        </BoxesWrapper> }
+  
     </>
 
     )

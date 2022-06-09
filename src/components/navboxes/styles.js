@@ -113,3 +113,18 @@ export const BoxesWrapper = styled.section`
 
          }
 `
+export const AlbumWrapper = styled.div`
+    display: flex;
+`
+export const InfoContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    margin-inline: 1rem;
+`
+export const SongName = styled.p`
+    font-weight: bold;
+    margin-bottom: 0
+`
+export const ArtistName = styled.p`
+    font-size: .8rem
+`

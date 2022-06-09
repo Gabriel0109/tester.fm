@@ -15,12 +15,12 @@ export function Box2({children}){
         // console.log(width)
         boxTween2.current = gsap.to(boxRef2.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
         textTween.current = gsap.fromTo(textRef.current, {opacity: 0, paused: true, x: -200}, {opacity: 1 , paused: true, x: 0} )
-        gsap.to(".div2", { x: -200, ease: 'linear', opacity: 0, scrollTrigger: {
-            trigger: ".div2",
-            toggleActions: "play none reverse none",
-            start: " top+=280 center",
-            scrub: true,
-        }})
+        // gsap.to(".div2", { x: -200, ease: 'linear', opacity: 0, scrollTrigger: {
+        //     trigger: ".div2",
+        //     toggleActions: "play none reverse none",
+        //     start: " top+=280 center",
+        //     scrub: true,
+        // }})
     }, [])
     function handleEnter2() {
         boxTween2.current.play()
