@@ -1,6 +1,8 @@
 // Hooks
 import { useEffect, useRef } from 'react'
 import { useSession } from "../../../hooks/useSession.tsx";
+//Styles 
+import {TopWrapper} from '../styles.js'
 // GSAP
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from 'gsap'
@@ -24,7 +26,14 @@ export function Box3({ children }) {
         <div className="div3 content" ref={boxRef3} onMouseEnter={handleEnter3} onMouseLeave={handleLeave3}>
             {children}
             {!topTrack.items ? <h1>teste</h1>:
-            <h1>{topTrack.items[0].name}</h1>
+       <TopWrapper>
+                <img src={topTrack.items[0].album.images[1].url} alt="" />
+                <h1>
+                    <a href={topTrack.items[0].external_urls.spotify} target="_blank">
+                    {topTrack.items[0].name}
+                    </a>
+                </h1>
+       </TopWrapper>
             }
         </div>
     )

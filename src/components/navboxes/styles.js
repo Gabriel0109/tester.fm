@@ -126,3 +126,13 @@ export const RecentlyList = styled.ul`
         /* font-size: .8rem; */
     }
 `
+export const TopWrapper = styled.div`
+    display: flex;
+    align-items: center;
+    img{
+        width: 100px;
+        height: 100px;
+        margin-right: 1rem;
+    }
+
+`
