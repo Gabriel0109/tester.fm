@@ -114,7 +114,7 @@ export function SessionProvider({ children }) {
                             setUser(responseOne.data.id)
                             setPlayingData(responseTwo.data)
                             setRecently(responseThree.data)
-                            console.log(responseThree.data.items)
+                            console.log(responseThree.data.items[0].track.artists[0])
                         })
                     )
             }

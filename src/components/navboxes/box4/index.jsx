@@ -46,6 +46,12 @@ export function Box4({ children }) {
                                 <a href={i.track.external_urls.spotify} target="_blank">
                                 {i.track.name}
                                 </a>
+                                {i.track.artists.map((teste) => (
+                                <a href="">
+                                    {teste.name}
+                                </a>
+                                    
+                                ))}
                             </li>
                         ))}
 
