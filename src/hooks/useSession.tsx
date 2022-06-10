@@ -1,22 +1,10 @@
 import { createContext, useEffect, useState } from 'react';
 import axios from 'axios'
 import { useContext } from 'react';
-interface Images {
-    url: string;
-}
-interface AlbumImg {
-    images: Images[];
-}
-interface ArtistsInterface {
-    href: string;
-    name: string;
-    external_urls: {
-        spotify: string;
-    },
-}
-interface ArtistInterface {
-    artistsArray: ArtistsInterface[]
-}
+import {AlbumImg, ArtistsData, topArtistsArray} from '../types'
+
+
+
 interface recentlyPlayedArray {
     track: {
         id: string,
@@ -25,12 +13,10 @@ interface recentlyPlayedArray {
         external_urls: {
             spotify: string;
         },
-        artists: ArtistInterface
+        artists: ArtistsData[]
         album: AlbumImg
     }
-       
 }
-
 interface recentlyPlayedInterface {
     items: recentlyPlayedArray[];
 }
@@ -42,10 +28,14 @@ interface playingDataInterface {
         external_urls: {
             spotify: string;
         },
-        artists: ArtistInterface
+        artists: ArtistsData[]
         album: AlbumImg
     }
 }
+interface topArtists {
+    items: topArtistsArray[]; 
+}
+
 interface contextInterface {
     user: string;
     token: string;
@@ -56,8 +46,8 @@ interface contextInterface {
     SCOPES: string[];
     playingData: playingDataInterface;
     recently: recentlyPlayedInterface;
+    topArtist: topArtists
     logout: () => void
-    refresh: () => void
 }
 
 const loginContext = createContext<contextInterface>({} as contextInterface)
@@ -74,6 +64,7 @@ export function SessionProvider({ children }) {
     const [user, setUser] = useState("")
     const [playingData, setPlayingData] = useState<playingDataInterface>({} as playingDataInterface)
     const [recently, setRecently] = useState<recentlyPlayedInterface>({} as recentlyPlayedInterface)
+    const [topArtist, setTopArtist] = useState<topArtists>({} as topArtists)
 
     useEffect(() => {
         const hash = window.location.hash
@@ -89,6 +80,8 @@ export function SessionProvider({ children }) {
                 let one = "https://api.spotify.com/v1/me"
                 let two = "https://api.spotify.com/v1/me/player/currently-playing"
                 let three = "https://api.spotify.com/v1/me/player/recently-played?limit=15"
+                let four = "https://api.spotify.com/v1/me/top/artists?limit=1"
+                let five = "https://api.spotify.com/v1/me/top/tracks?limit=1"
                 const requestOne = await axios.get(one, {
                     headers: {
                         Authorization: `Bearer ${token}`
@@ -104,17 +97,31 @@ export function SessionProvider({ children }) {
                         Authorization: `Bearer ${token}`
                     },
                 });
+                const requestFour = await axios.get(four, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                });
+                const requestFive = await axios.get(five, {
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    },
+                });
                 await axios
-                    .all([requestOne, requestTwo, requestThree])
+                    .all([requestOne, requestTwo, requestThree, requestFour,requestFive])
                     .then(
                         await axios.spread((...responses) => {
                             const responseOne = responses[0];
                             const responseTwo = responses[1];
                             const responseThree = responses[2];
+                            const responseFour = responses[3];
+                            const responseFive = responses[4];
                             setUser(responseOne.data.id)
                             setPlayingData(responseTwo.data)
                             setRecently(responseThree.data)
-                            console.log(responseThree.data.items[0].track.artists[0])
+                            setTopArtist(responseFour.data)
+                            console.log(topArtist)
+                            // console.log(responseFive.data)
                         })
                     )
             }
@@ -132,21 +139,21 @@ export function SessionProvider({ children }) {
         window.localStorage.removeItem("token")
         document.location.reload();
     }
-    const refresh = () => {
-        const url2 = "https://api.spotify.com/v1/me/player/currently-playing";
-        axios.get(url2, {
-            headers: {
-                Authorization: `Bearer ${token}`
-            },
-        }).then(response => {
-            setPlayingData(response.data)
+    // const refresh = () => {
+    //     const url2 = "https://api.spotify.com/v1/me/player/currently-playing";
+    //     axios.get(url2, {
+    //         headers: {
+    //             Authorization: `Bearer ${token}`
+    //         },
+    //     }).then(response => {
+    //         setPlayingData(response.data)
 
-        })
-    }
+    //     })
+    // }
 
 
 
-    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, refresh, playingData, recently }}>
+    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, playingData, recently, topArtist }}>
         {children}
     </loginContext.Provider>
 

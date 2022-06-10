@@ -14,20 +14,17 @@ export function Navboxes() {
     return (<>
         <BoxesWrapper>
             <Box1>
-                <h1>Tocando Agora</h1>
+                <h1>Playing</h1>
             </Box1>
             <Box2>
-                {/* <h3>Tocadas Recentemente</h3> */}
+                <h3>Most Played</h3>
             </Box2>
 
             <Box3>
-                <h1>3</h1>
-                <div className="text-flow">
-                    teste teste teste
-                </div>
+        
             </Box3>
             <Box4>
-            <h3>Tocadas Recentemente</h3>
+            <h3>Recent Tracks</h3>
             </Box4>
 
         </BoxesWrapper>

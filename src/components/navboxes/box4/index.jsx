@@ -2,7 +2,7 @@
 import { useEffect, useRef } from 'react'
 import { useSession } from "../../../hooks/useSession.tsx";
 // Styling
-import { NoMusicWrap, RecentlyList, RecentlyListWrapper } from '../styles.js'
+import { NoMusicWrap, RecentlyList, RecentlyListWrapper, InfoContent, SongNameList, ArtistName } from '../styles.js'
 // GSAP
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from 'gsap'
@@ -42,16 +42,23 @@ export function Box4({ children }) {
                     <RecentlyList>
                         {recently.items.map((i) => (
                             <li key={i.id}>
-                                <img src={i.track.album.images[1].url} width="60" alt="" />
+                                <img src={i.track.album.images[2].url} width="60" alt="" />
+                                <InfoContent>
+                                    <SongNameList>
                                 <a href={i.track.external_urls.spotify} target="_blank">
                                 {i.track.name}
                                 </a>
-                                {i.track.artists.map((teste) => (
-                                <a href="">
-                                    {teste.name}
+                                </SongNameList>
+                                <ArtistName>
+                                {i.track.artists.map((a) => (
+                                <a key={i.id} href="/">
+                                    {a.name}
                                 </a>
-                                    
-                                ))}
+                                ))
+                                .reduce((prev, curr) => [prev, ', ', curr])}
+                                </ArtistName>
+                                </InfoContent>
+
                             </li>
                         ))}
 

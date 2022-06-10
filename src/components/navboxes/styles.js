@@ -86,6 +86,11 @@ export const SongName = styled.h2`
 
     margin-bottom: 0;
 `
+export const SongNameList = styled.p`
+    font-weight: bold;
+
+    margin-block: 0;
+`
 export const ArtistName = styled.ul`
     font-size: .8rem;
     list-style: none;
@@ -98,8 +103,7 @@ export const ArtistName = styled.ul`
 export const NoMusicWrap = styled.p`
 `
 export const RecentlyListWrapper = styled.div`
-    /* list-style: none; */
-    height: 5rem;
+    height: 5.5rem;
     overflow: scroll;
 `
 export const RecentlyList = styled.ul`
@@ -110,6 +114,9 @@ export const RecentlyList = styled.ul`
         padding-block: 1rem;
         display: flex;
         align-items: center;
+        &:first-child{
+            padding-block: 0; 
+        }
         a{
             padding-left: .4rem;
         }
