@@ -51,7 +51,7 @@ export function Box4({ children }) {
                                 </SongNameList>
                                 <ArtistName>
                                 {i.track.artists.map((a) => (
-                                <a key={i.id} href="/">
+                                <a key={a.id} href="/">
                                     {a.name}
                                 </a>
                                 ))

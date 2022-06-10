@@ -17,11 +17,11 @@ export function Navboxes() {
                 <h1>Playing</h1>
             </Box1>
             <Box2>
-                <h3>Most Played</h3>
+                <h3>Most Played Artist</h3>
             </Box2>
 
-            <Box3>
-        
+            <Box3>  
+            <h3>Most Played Track</h3>
             </Box3>
             <Box4>
             <h3>Recent Tracks</h3>

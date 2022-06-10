@@ -35,7 +35,7 @@ interface playingDataInterface {
 interface topArtists {
     items: topArtistsArray[]; 
 }
-
+type topTrackInterface = playingDataInterface
 interface contextInterface {
     user: string;
     token: string;
@@ -46,7 +46,8 @@ interface contextInterface {
     SCOPES: string[];
     playingData: playingDataInterface;
     recently: recentlyPlayedInterface;
-    topArtist: topArtists
+    topArtist: topArtists;
+    topTrack: topTrackInterface;
     logout: () => void
 }
 
@@ -65,6 +66,7 @@ export function SessionProvider({ children }) {
     const [playingData, setPlayingData] = useState<playingDataInterface>({} as playingDataInterface)
     const [recently, setRecently] = useState<recentlyPlayedInterface>({} as recentlyPlayedInterface)
     const [topArtist, setTopArtist] = useState<topArtists>({} as topArtists)
+    const [topTrack, setTopTrack] = useState<topTrackInterface>({} as topTrackInterface)
 
     useEffect(() => {
         const hash = window.location.hash
@@ -77,51 +79,50 @@ export function SessionProvider({ children }) {
         }
         try {
             async function load() {
-                let one = "https://api.spotify.com/v1/me"
-                let two = "https://api.spotify.com/v1/me/player/currently-playing"
-                let three = "https://api.spotify.com/v1/me/player/recently-played?limit=15"
-                let four = "https://api.spotify.com/v1/me/top/artists?limit=1"
-                let five = "https://api.spotify.com/v1/me/top/tracks?limit=1"
-                const requestOne = await axios.get(one, {
+                let user = "https://api.spotify.com/v1/me"
+                let currenttrack = "https://api.spotify.com/v1/me/player/currently-playing"
+                let recentlylist = "https://api.spotify.com/v1/me/player/recently-played?limit=15"
+                let topartist = "https://api.spotify.com/v1/me/top/artists?limit=1"
+                let toptrack = "https://api.spotify.com/v1/me/top/tracks?limit=1"
+                const requestUser = await axios.get(user, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 });
-                const requestTwo = await axios.get(two, {
+                const requestCurrentTrack = await axios.get(currenttrack, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 });
-                const requestThree = await axios.get(three, {
+                const requestRecentlyList = await axios.get(recentlylist, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 });
-                const requestFour = await axios.get(four, {
+                const requestTopArtist = await axios.get(topartist, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 });
-                const requestFive = await axios.get(five, {
+                const requestTopTrack = await axios.get(toptrack, {
                     headers: {
                         Authorization: `Bearer ${token}`
                     },
                 });
                 await axios
-                    .all([requestOne, requestTwo, requestThree, requestFour,requestFive])
+                    .all([requestUser, requestCurrentTrack, requestRecentlyList, requestTopArtist,requestTopTrack])
                     .then(
                         await axios.spread((...responses) => {
-                            const responseOne = responses[0];
-                            const responseTwo = responses[1];
-                            const responseThree = responses[2];
-                            const responseFour = responses[3];
-                            const responseFive = responses[4];
-                            setUser(responseOne.data.id)
-                            setPlayingData(responseTwo.data)
-                            setRecently(responseThree.data)
-                            setTopArtist(responseFour.data)
-                            console.log(topArtist)
-                            // console.log(responseFive.data)
+                            const responseUser = responses[0];
+                            const responseCurrentTrack = responses[1];
+                            const responseRecentlyList = responses[2];
+                            const responseTopArtist = responses[3];
+                            const responseTopTrack = responses[4];
+                            setUser(responseUser.data.id)
+                            setPlayingData(responseCurrentTrack.data)
+                            setRecently(responseRecentlyList.data)
+                            setTopArtist(responseTopArtist.data)
+                            setTopTrack(responseTopTrack.data)
                         })
                     )
             }
@@ -153,7 +154,7 @@ export function SessionProvider({ children }) {
 
 
 
-    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, playingData, recently, topArtist }}>
+    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, playingData, recently, topArtist, topTrack }}>
         {children}
     </loginContext.Provider>
 

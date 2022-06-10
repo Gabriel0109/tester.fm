@@ -1,9 +1,6 @@
 // Hooks
 import { useEffect, useRef } from 'react'
 import { useSession } from "../../../hooks/useSession.tsx";
-// Styling
-// import logo from '../../../public/imgs/nomusic.png'
-// import {  NoMusicWrap, RecentlyList } from '../styles.js'
 // GSAP
 import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import gsap from 'gsap'
@@ -17,10 +14,8 @@ export function Box2({ children }) {
 
     useEffect(() => {
         boxTween2.current = gsap.to(boxRef2.current, { scale: .985, paused: true, borderRadius: '2.5rem' });
-        if(topArtist.items){
-            console.log('teste', topArtist)
-        }
-    }, [topArtist])
+       
+    }, [])
     function handleEnter2() {
         boxTween2.current.play()
 

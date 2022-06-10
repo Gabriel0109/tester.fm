@@ -47,8 +47,11 @@ export const BoxesWrapper = styled.section`
          color: var(--text-color);
          border-radius: 1rem;
          min-height: 7rem;
-         display: flex;
-         align-items: flex-end;
+         h3{
+            margin-top: 0
+        }
+         /* display: flex;
+         align-items: flex-end; */
     
         }
 /*=============*/
