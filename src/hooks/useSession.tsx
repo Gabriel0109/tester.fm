@@ -57,7 +57,7 @@ const loginContext = createContext<contextInterface>({} as contextInterface)
 export function SessionProvider({ children }) {
 
     const CLIENT_ID = "7db72dde18e949d280daba96bf9d69e9"
-    const REDIRECT_URI = "http://localhost:3000"
+    const REDIRECT_URI = "https://classy-druid-749ea2.netlify.app/"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
     const SCOPES = ["user-read-currently-playing", "user-read-recently-played", "user-top-read"]
