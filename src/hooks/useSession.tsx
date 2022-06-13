@@ -48,7 +48,9 @@ interface contextInterface {
     recently: recentlyPlayedInterface;
     topArtist: topArtists;
     topTrack: topTrackInterface;
-    logout: () => void
+    logout: () => void;
+    isLoading: boolean;
+
 }
 
 const loginContext = createContext<contextInterface>({} as contextInterface)
@@ -57,7 +59,7 @@ const loginContext = createContext<contextInterface>({} as contextInterface)
 export function SessionProvider({ children }) {
 
     const CLIENT_ID = "7db72dde18e949d280daba96bf9d69e9"
-    const REDIRECT_URI = "https://classy-druid-749ea2.netlify.app/"
+    const REDIRECT_URI = "http://localhost:3000"
     const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
     const RESPONSE_TYPE = "token"
     const SCOPES = ["user-read-currently-playing", "user-read-recently-played", "user-top-read"]
@@ -67,6 +69,7 @@ export function SessionProvider({ children }) {
     const [recently, setRecently] = useState<recentlyPlayedInterface>({} as recentlyPlayedInterface)
     const [topArtist, setTopArtist] = useState<topArtists>({} as topArtists)
     const [topTrack, setTopTrack] = useState<topTrackInterface>({} as topTrackInterface)
+    const [isLoading, setIsLoading] = useState(true)
 
     useEffect(() => {
         const hash = window.location.hash
@@ -125,6 +128,7 @@ export function SessionProvider({ children }) {
                             setTopTrack(responseTopTrack.data)
                         })
                     )
+                    setIsLoading(false)
             }
             load()
         } catch {
@@ -153,7 +157,7 @@ export function SessionProvider({ children }) {
 
 
 
-    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, playingData, recently, topArtist, topTrack }}>
+    return (<loginContext.Provider value={{ CLIENT_ID, REDIRECT_URI, AUTH_ENDPOINT, RESPONSE_TYPE, token, user, SCOPES, logout, playingData, recently, topArtist, topTrack, isLoading }}>
         {children}
     </loginContext.Provider>
 
